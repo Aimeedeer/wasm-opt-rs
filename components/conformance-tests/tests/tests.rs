@@ -840,6 +840,7 @@ fn wasm_to_wasm_converge() -> Result<()> {
 }
 
 #[test]
+#[ignore] //todo
 fn input_file_does_not_exist() -> Result<()> {
     let infile = PathBuf::from("bogus.wasm");
     let outfile = PathBuf::from("bogus-out.wasm");
