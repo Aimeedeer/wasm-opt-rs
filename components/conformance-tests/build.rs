@@ -42,8 +42,7 @@ fn build_binaryen_wasm_opt() -> Result<()> {
 
     let cmake_status = Command::new("cmake")
         .current_dir(&dirs.binaryen_build)
-        .arg(format!("-S {}", &dirs.binaryen_src.display()))
-        .arg(format!("-B {}", &dirs.binaryen_build.display()))
+        .arg(&dirs.binaryen_src)
         .arg("-DBUILD_TESTS=OFF")
         .status()?;
 
@@ -51,18 +50,13 @@ fn build_binaryen_wasm_opt() -> Result<()> {
         bail!("cmake failed");
     }
 
-    println!("binaryen_src {:?}", dirs.binaryen_src);
-    println!("binaryen_build: {:?}", dirs.binaryen_build);
-
     let make_status = Command::new("make")
         .current_dir(&dirs.binaryen_build)
         .status()?;
-    println!("build_binaryen_wasm_opt 4");
 
     if !make_status.success() {
         bail!("make failed");
     }
-    println!("build_binaryen_wasm_opt 5");
 
     Ok(())
 }
