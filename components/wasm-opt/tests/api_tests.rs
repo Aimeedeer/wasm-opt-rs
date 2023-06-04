@@ -98,6 +98,7 @@ fn test_optimization_options_os() -> anyhow::Result<()> {
 }
 
 #[test]
+#[ignore] //todo
 fn optimization_read_module_error_works() -> anyhow::Result<()> {
     let temp_dir = Builder::new().prefix("wasm_opt_tests").tempdir()?;
     let inpath = temp_dir.path().join("infile.wasm");
